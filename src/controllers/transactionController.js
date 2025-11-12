@@ -6,7 +6,7 @@ class TransactionController {
     }
     async createTrasaction(req,res,next) {
         try {
-            const customerId = await decodeMiddleware(req,res).id;
+            
             const transaction = await this.transactionService.createTransaction(customerId, req.body);
             res.status(201).json(transaction);
         } catch (err) {
@@ -23,4 +23,5 @@ class TransactionController {
         }
     }
 }
+
 export default TransactionController

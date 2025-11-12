@@ -6,7 +6,7 @@ class TransactionController {
     }
     async createTrasaction(req,res,next) {
         try {
-            const transaction = await this.transactionService.createTransaction(req.body);
+            const transaction = await this.transactionService.createTransaction(req.user,req.body);
             res.status(201).json(transaction);
         } catch (err) {
             next(err);
@@ -14,7 +14,7 @@ class TransactionController {
     }
     async getAllTransactions(req,res,next) {
         try {
-            const transactions = await this.transactionService.getAllTransactions();
+            const transactions = await this.transactionService.getAllTransactions(req.user);
             res.status(201).json(transactions);
         } catch (err) {
             next(err);
@@ -23,4 +23,5 @@ class TransactionController {
 }
 
 export default TransactionController
+
 
